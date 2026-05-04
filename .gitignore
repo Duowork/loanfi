@@ -4,3 +4,4 @@ dist
 *.local
 .env
 node_modules/.cache/gh-pages
+.claude

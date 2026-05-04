@@ -1,0 +1,168 @@
+/* Loanfi tokens — 60/30/10 */
+:root {
+  /* core palette */
+  --cream: #FAF6EC;
+  --cream-2: #F4EFE0;        /* slightly deeper cream for cards on cream */
+  --cream-3: #E9E2CC;        /* hairline / divider on cream */
+  --green: #0F3D2E;
+  --green-2: #1B5440;        /* hover */
+  --green-3: #0A2A20;        /* deepest */
+  --green-ink: #07251C;      /* body ink on cream */
+  --green-soft: #2E6B54;     /* secondary type on green */
+  --gold: #D4A24C;
+  --gold-2: #E8B763;
+  --gold-soft: #F4DEB0;
+
+  /* tints derived from cream */
+  --ink: #1A2A22;            /* primary text on cream */
+  --ink-2: #4B5A52;          /* secondary text */
+  --ink-3: #7A8880;          /* tertiary, captions */
+  --line: rgba(15,61,46,.12);
+  --line-strong: rgba(15,61,46,.22);
+
+  /* semantic */
+  --success: #2F7D4F;
+  --warn: #C8862B;
+  --danger: #B33A2B;
+  --info: #2D5C8A;
+  --success-bg: #E6F1E8;
+  --warn-bg: #F8ECCF;
+  --danger-bg: #F4E0DC;
+  --info-bg: #E1ECF6;
+
+  /* radii */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+
+  /* shadows — warm, soft */
+  --sh-1: 0 1px 0 rgba(15,61,46,.04), 0 1px 2px rgba(15,61,46,.06);
+  --sh-2: 0 2px 4px rgba(15,61,46,.05), 0 6px 18px rgba(15,61,46,.08);
+  --sh-3: 0 8px 24px rgba(15,61,46,.10), 0 20px 60px rgba(15,61,46,.12);
+
+  /* type */
+  --f-display: "Instrument Serif", "Cormorant Garamond", Georgia, serif;
+  --f-ui: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+/* base */
+.lf-root {
+  font-family: var(--f-ui);
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.lf-root * { box-sizing: border-box; }
+.lf-root h1, .lf-root h2, .lf-root h3 { margin: 0; font-weight: 400; letter-spacing: -0.01em; }
+.lf-root .display { font-family: var(--f-display); font-weight: 400; letter-spacing: -0.02em; line-height: 1.02; }
+.lf-root .mono { font-family: var(--f-mono); font-feature-settings: "tnum"; }
+.lf-root .num { font-family: var(--f-mono); font-feature-settings: "tnum"; }
+
+/* surfaces */
+.lf-surface { background: var(--cream); }
+.lf-card {
+  background: #FFFCF3;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-1);
+}
+.lf-card-green {
+  background: var(--green);
+  color: #F2EAD3;
+  border-radius: var(--r-md);
+}
+.lf-divider { height: 1px; background: var(--line); border: 0; margin: 0; }
+
+/* buttons */
+.lf-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 44px; padding: 0 18px; border-radius: 999px;
+  font-family: var(--f-ui); font-size: 14px; font-weight: 500; letter-spacing: -0.005em;
+  border: 1px solid transparent; cursor: pointer;
+  transition: transform .06s ease, background .15s, border-color .15s, color .15s;
+  user-select: none;
+}
+.lf-btn:active { transform: translateY(1px); }
+.lf-btn-primary { background: var(--green); color: #F4EBCF; }
+.lf-btn-primary:hover { background: var(--green-2); }
+.lf-btn-gold { background: var(--gold); color: var(--green-3); }
+.lf-btn-gold:hover { background: var(--gold-2); }
+.lf-btn-ghost { background: transparent; color: var(--green); border-color: var(--line-strong); }
+.lf-btn-ghost:hover { background: rgba(15,61,46,.05); }
+.lf-btn-text { background: transparent; color: var(--green); height: auto; padding: 6px 8px; }
+.lf-btn-sm { height: 34px; padding: 0 14px; font-size: 13px; }
+.lf-btn-lg { height: 52px; padding: 0 22px; font-size: 15px; }
+.lf-btn:disabled { opacity: .45; cursor: not-allowed; }
+
+/* inputs */
+.lf-input {
+  display: block; width: 100%;
+  height: 48px; padding: 0 14px;
+  background: #FFFCF3;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  color: var(--ink);
+  font: 14px/1 var(--f-ui);
+  outline: none;
+  transition: border-color .12s, box-shadow .12s;
+}
+.lf-input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(15,61,46,.10); }
+.lf-input.lf-mono { font-family: var(--f-mono); letter-spacing: 0.02em; }
+.lf-label { display: block; font-size: 12px; color: var(--ink-2); margin: 0 0 6px 2px; letter-spacing: 0.01em; }
+.lf-help { font-size: 11.5px; color: var(--ink-3); margin: 6px 2px 0; }
+.lf-err  { font-size: 11.5px; color: var(--danger); margin: 6px 2px 0; }
+
+/* badges */
+.lf-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 22px; padding: 0 9px;
+  border-radius: 999px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.02em;
+  font-family: var(--f-ui);
+}
+.lf-badge .dot { width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
+.lf-badge-success { color: var(--success); background: var(--success-bg); }
+.lf-badge-warn    { color: var(--warn);    background: var(--warn-bg); }
+.lf-badge-danger  { color: var(--danger);  background: var(--danger-bg); }
+.lf-badge-info    { color: var(--info);    background: var(--info-bg); }
+.lf-badge-gold    { color: #6E4A12; background: var(--gold-soft); }
+.lf-badge-green   { color: var(--green);  background: rgba(15,61,46,.08); }
+
+/* progress */
+.lf-progress { height: 6px; background: rgba(15,61,46,.10); border-radius: 999px; overflow: hidden; }
+.lf-progress > i { display: block; height: 100%; background: var(--green); border-radius: 999px; transition: width .35s cubic-bezier(.2,.7,.3,1); }
+.lf-progress-gold > i { background: var(--gold); }
+
+/* shape backgrounds — geometric, palette-only */
+.lf-shape-arch {
+  background:
+    radial-gradient(120% 100% at 50% 100%, var(--green) 0 50%, transparent 51%),
+    var(--cream-2);
+}
+.lf-shape-rings {
+  background:
+    radial-gradient(circle at 80% 20%, transparent 60px, rgba(15,61,46,.08) 61px 62px, transparent 63px),
+    radial-gradient(circle at 80% 20%, transparent 90px, rgba(15,61,46,.06) 91px 92px, transparent 93px),
+    radial-gradient(circle at 80% 20%, transparent 120px, rgba(15,61,46,.05) 121px 122px, transparent 123px),
+    var(--cream);
+}
+.lf-shape-dotgrid {
+  background-image: radial-gradient(rgba(15,61,46,.18) 1px, transparent 1.4px);
+  background-size: 14px 14px;
+  background-position: 0 0;
+}
+
+/* focus ring */
+.lf-focus:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* small UI bits */
+.lf-kbd {
+  font-family: var(--f-mono); font-size: 10.5px;
+  padding: 2px 6px; border-radius: 4px;
+  border: 1px solid var(--line-strong); background: var(--cream-2); color: var(--ink-2);
+}
+.lf-tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
